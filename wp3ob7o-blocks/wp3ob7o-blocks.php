@@ -3,7 +3,7 @@
  * Plugin Name: W P3OB7O Blocks
  * Plugin URI: https://p3ob7o.blog/
  * Description: Custom blocks for the W P3OB7O theme. Provides the dark mode toggle and reading time blocks.
- * Version: 0.1.0
+ * Version: 0.2.0
  * Author: Paolo Belcastro
  * Author URI: https://paolobelcastro.com
  * License: GPL-2.0-or-later
