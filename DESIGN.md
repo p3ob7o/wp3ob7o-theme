@@ -17,7 +17,7 @@
 ### Typeface
 - **Primary (body + headings):** Source Serif 4 (Frank Griesshammer, Adobe)
 - **Rationale:** Contemporary transitional serif with moderate contrast. Full OpenType support. Variable font. Closest publicly available match to the warmth and proportion of Anthropic Serif. Single typeface for everything (the theme is one voice).
-- **Loading:** Bundled .woff2 files via theme.json `fontFace` with `font-display: swap`. No external CDN dependency.
+- **Loading:** Google Fonts CDN via `<link>`, `font-display: swap`
 - **Fallback stack:** `"Source Serif 4", serif`
 
 ### Type Scale
