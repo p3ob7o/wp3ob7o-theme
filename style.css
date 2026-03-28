@@ -152,15 +152,12 @@ a:focus-visible {
    ========================================================================== */
 
 .universe-nav {
-	display: flex;
-	gap: var(--space-md);
-	padding: var(--space-sm) var(--space-md);
-	font-size: 12px;
-	font-weight: 400;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
-	justify-content: center;
 	border-bottom: 1px solid var(--color-border);
+	padding: var(--space-sm) var(--space-md);
+}
+
+.universe-nav .wp-block-navigation__container {
+	justify-content: center;
 }
 
 .universe-nav a {
@@ -174,11 +171,11 @@ a:focus-visible {
 }
 
 /* Current room highlighting — activated by style variation body class */
-body.has-variation-paolo-blog .universe-nav .nav-room-paolo-blog,
-body.has-variation-ttl-blog .universe-nav .nav-room-ttl-blog,
-body.has-variation-monochrome-blog .universe-nav .nav-room-monochrome-blog,
-body.has-variation-monochrome-photo .universe-nav .nav-room-monochrome-photo,
-body.has-variation-paolobelcastro .universe-nav .nav-room-paolobelcastro {
+body.has-variation-paolo-blog .universe-nav .nav-room-paolo-blog a,
+body.has-variation-ttl-blog .universe-nav .nav-room-ttl-blog a,
+body.has-variation-monochrome-blog .universe-nav .nav-room-monochrome-blog a,
+body.has-variation-monochrome-photo .universe-nav .nav-room-monochrome-photo a,
+body.has-variation-paolobelcastro .universe-nav .nav-room-paolobelcastro a {
 	font-weight: 600;
 	color: var(--color-text);
 }
@@ -271,20 +268,8 @@ html.dark-mode .dark-mode-toggle .icon-sun { display: inline; }
 }
 
 .next-room-label {
-	font-size: 12px;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
 	color: var(--color-text-muted);
 	margin-bottom: var(--space-sm);
-}
-
-.next-room-links {
-	display: flex;
-	gap: var(--space-md);
-	justify-content: center;
-	font-size: 12px;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
 }
 
 .next-room-links a {

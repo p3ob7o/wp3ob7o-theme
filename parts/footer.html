@@ -1,19 +1,15 @@
 <!-- wp:group {"className":"next-room","layout":{"type":"constrained","contentSize":"640px"}} -->
 <div class="wp-block-group next-room">
-	<!-- wp:paragraph {"className":"next-room-label"} -->
+	<!-- wp:paragraph {"className":"next-room-label","fontSize":"ui-label","style":{"typography":{"textTransform":"uppercase","letterSpacing":"0.04em"}}} -->
 	<p class="next-room-label">More from the universe</p>
 	<!-- /wp:paragraph -->
 
-	<!-- wp:group {"className":"next-room-links","layout":{"type":"flex","justifyContent":"center"}} -->
-	<div class="wp-block-group next-room-links">
-		<!-- wp:html -->
-		<a href="https://paolo.blog" class="nav-room-paolo-blog">paolo.blog</a>
-		<a href="https://ttl.blog" class="nav-room-ttl-blog">ttl.blog</a>
-		<a href="https://monochrome.blog" class="nav-room-monochrome-blog">monochrome</a>
-		<a href="https://monochrome.photo" class="nav-room-monochrome-photo">photos</a>
-		<!-- /wp:html -->
-	</div>
-	<!-- /wp:group -->
+	<!-- wp:navigation {"overlayMenu":"never","className":"next-room-links","layout":{"type":"flex","justifyContent":"center"},"fontSize":"ui-label","style":{"typography":{"textTransform":"uppercase","letterSpacing":"0.04em"},"spacing":{"blockGap":"var:preset|spacing|50"}}} -->
+		<!-- wp:navigation-link {"label":"paolo.blog","url":"https://paolo.blog","className":"nav-room-paolo-blog"} /-->
+		<!-- wp:navigation-link {"label":"ttl.blog","url":"https://ttl.blog","className":"nav-room-ttl-blog"} /-->
+		<!-- wp:navigation-link {"label":"monochrome","url":"https://monochrome.blog","className":"nav-room-monochrome-blog"} /-->
+		<!-- wp:navigation-link {"label":"photos","url":"https://monochrome.photo","className":"nav-room-monochrome-photo"} /-->
+	<!-- /wp:navigation -->
 </div>
 <!-- /wp:group -->
 
