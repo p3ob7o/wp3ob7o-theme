@@ -1,0 +1,32 @@
+<!-- wp:template-part {"slug":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"content-essay","layout":{"type":"constrained","contentSize":"640px"},"metadata":{"name":"Main Content"}} -->
+<main id="main-content" class="wp-block-group content-essay">
+	<!-- wp:query {"queryId":1,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":true}} -->
+	<div class="wp-block-query">
+		<!-- wp:post-template -->
+			<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontSize":"var:preset|font-size|x-large","fontWeight":"400"},"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}}} /-->
+			<!-- wp:post-date {"fontSize":"meta","style":{"color":{"text":"var:preset|color|text-muted"}}} /-->
+			<!-- wp:post-excerpt {"moreText":"Read more","excerptLength":40} /-->
+			<!-- wp:spacer {"height":"32px"} -->
+			<div style="height:32px" aria-hidden="true" class="wp-block-spacer"></div>
+			<!-- /wp:spacer -->
+		<!-- /wp:post-template -->
+
+		<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+			<!-- wp:query-pagination-previous /-->
+			<!-- wp:query-pagination-numbers /-->
+			<!-- wp:query-pagination-next /-->
+		<!-- /wp:query-pagination -->
+
+		<!-- wp:query-no-results -->
+			<!-- wp:paragraph {"align":"center"} -->
+			<p class="has-text-align-center">No posts yet.</p>
+			<!-- /wp:paragraph -->
+		<!-- /wp:query-no-results -->
+	</div>
+	<!-- /wp:query -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","area":"footer"} /-->

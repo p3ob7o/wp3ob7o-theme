@@ -1,0 +1,10 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"title": "monochrome.photo",
+	"settings": {
+		"custom": {
+			"siteVariation": "monochrome-photo"
+		}
+	}
+}

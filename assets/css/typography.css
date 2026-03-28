@@ -1,0 +1,30 @@
+/* ==========================================================================
+   Typography — Butterick-compliant OpenType layer
+   Source Serif 4, tuned to refs/practical-typography.pdf
+   ========================================================================== */
+
+body {
+	font-feature-settings: "liga" 1, "kern" 1;
+	font-kerning: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+/* Small caps — used for acronyms, abbreviations, and emphasis */
+.small-caps,
+.smcaps {
+	font-variant-caps: small-caps;
+	letter-spacing: 0.05em;
+}
+
+/* Old-style figures — for body text dates and numbers */
+.old-style-nums {
+	font-feature-settings: "onum" 1;
+}
+
+/* All-caps text — per Butterick, fine for less than one line */
+.all-caps {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}

@@ -1,0 +1,501 @@
+/*
+Theme Name: The Publishing Universe
+Theme URI: https://paolo.blog
+Author: Paolo Belcastro
+Author URI: https://paolobelcastro.com
+Description: A WordPress block theme powering a personal publishing universe. Five sites, one design language, different rooms in the same home. Butterick-compliant typography, dual dark mode (warm paper for text, near-black for photos), and Source Serif 4 throughout.
+Version: 0.1.0
+Requires at least: 6.7
+Tested up to: 7.0
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: publishing-universe
+Tags: blog, photography, one-column, custom-colors, editor-style, full-site-editing, block-patterns, wide-blocks
+*/
+
+/* ==========================================================================
+   CSS Custom Properties — Surface System
+   Three surfaces: Light (default), Text Dark, Photo Dark.
+   Activated by .dark-mode class on <html>, scoped to template class on <body>.
+   ========================================================================== */
+
+:root {
+	--color-bg: #f8f7f4;
+	--color-text: #1a1a1a;
+	--color-text-secondary: #555;
+	--color-text-muted: #999;
+	--color-accent: #9b4d3a;
+	--color-accent-hover: #7d3e2e;
+	--color-border: #e0ddd8;
+
+	--space-2xs: 2px;
+	--space-xs: 4px;
+	--space-sm: 8px;
+	--space-md: 16px;
+	--space-lg: 24px;
+	--space-xl: 32px;
+	--space-2xl: 48px;
+	--space-3xl: 64px;
+
+	--transition-surface: background-color 200ms ease-in-out, color 200ms ease-in-out;
+	--transition-link: color 150ms ease-out;
+}
+
+/* Text Dark surface — essays, magazine, specimen */
+html.dark-mode {
+	--color-bg: #111;
+	--color-text: #b0ada8;
+	--color-text-secondary: #888;
+	--color-text-muted: #666;
+	--color-accent: #c4725e;
+	--color-accent-hover: #d4856e;
+	--color-border: #2a2a2a;
+}
+
+/* Photo Dark surface — single photo, gallery */
+html.dark-mode body.template-single-photo,
+html.dark-mode body.template-gallery {
+	--color-bg: #0a0a0a;
+	--color-text: #888;
+	--color-text-secondary: #666;
+	--color-text-muted: #444;
+	--color-border: #222;
+}
+
+/* ==========================================================================
+   Global Styles
+   ========================================================================== */
+
+body {
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	transition: var(--transition-surface);
+}
+
+a {
+	color: var(--color-accent);
+	text-decoration: none;
+	transition: var(--transition-link);
+}
+
+a:hover {
+	color: var(--color-accent-hover);
+	text-decoration: underline;
+}
+
+a:visited {
+	color: var(--color-accent);
+}
+
+a:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Skip Link (a11y)
+   ========================================================================== */
+
+.skip-to-content {
+	position: absolute;
+	left: -9999px;
+	top: var(--space-sm);
+	z-index: 100;
+	padding: var(--space-sm) var(--space-md);
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-size: 13px;
+}
+
+.skip-to-content:focus {
+	left: var(--space-md);
+}
+
+/* ==========================================================================
+   Layout — Content Widths
+   ========================================================================== */
+
+.content-essay {
+	max-width: 640px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content-photo {
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content-gallery {
+	max-width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.content-bio {
+	max-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.content-specimen {
+	max-width: 720px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ==========================================================================
+   Cross-site Navigation
+   ========================================================================== */
+
+.universe-nav {
+	display: flex;
+	gap: var(--space-md);
+	padding: var(--space-sm) var(--space-md);
+	font-size: 12px;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	justify-content: center;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.universe-nav a {
+	color: var(--color-text-muted);
+	text-decoration: none;
+}
+
+.universe-nav a:hover {
+	color: var(--color-text-secondary);
+	text-decoration: none;
+}
+
+/* Current room highlighting — activated by style variation body class */
+body.has-variation-paolo-blog .universe-nav .nav-room-paolo-blog,
+body.has-variation-ttl-blog .universe-nav .nav-room-ttl-blog,
+body.has-variation-monochrome-blog .universe-nav .nav-room-monochrome-blog,
+body.has-variation-monochrome-photo .universe-nav .nav-room-monochrome-photo,
+body.has-variation-paolobelcastro .universe-nav .nav-room-paolobelcastro {
+	font-weight: 600;
+	color: var(--color-text);
+}
+
+/* ==========================================================================
+   Site Header
+   ========================================================================== */
+
+.site-header {
+	padding: var(--space-xl) 0;
+	max-width: 640px;
+	margin: 0 auto;
+}
+
+.site-title {
+	font-size: 18px;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+}
+
+.site-title a {
+	color: var(--color-text);
+	text-decoration: none;
+}
+
+.site-tagline {
+	font-size: 13px;
+	color: var(--color-text-muted);
+	margin-top: var(--space-xs);
+}
+
+/* ==========================================================================
+   Dark Mode Toggle
+   ========================================================================== */
+
+.dark-mode-toggle {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: var(--space-sm);
+	color: var(--color-text-muted);
+	font-size: 20px;
+	line-height: 1;
+	min-width: 44px;
+	min-height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+	color: var(--color-text);
+}
+
+.dark-mode-toggle:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+/* Show sun in dark mode, moon in light mode */
+.dark-mode-toggle .icon-moon { display: inline; }
+.dark-mode-toggle .icon-sun { display: none; }
+
+html.dark-mode .dark-mode-toggle .icon-moon { display: none; }
+html.dark-mode .dark-mode-toggle .icon-sun { display: inline; }
+
+/* ==========================================================================
+   Post Meta
+   ========================================================================== */
+
+.post-meta {
+	font-size: 13px;
+	color: var(--color-text-muted);
+	margin-bottom: var(--space-lg);
+}
+
+.reading-time {
+	display: inline;
+}
+
+/* ==========================================================================
+   "Next Room" Footer
+   ========================================================================== */
+
+.next-room {
+	margin-top: var(--space-2xl);
+	padding-top: var(--space-xl);
+	border-top: 1px solid var(--color-border);
+	text-align: center;
+}
+
+.next-room-label {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--color-text-muted);
+	margin-bottom: var(--space-sm);
+}
+
+.next-room-links {
+	display: flex;
+	gap: var(--space-md);
+	justify-content: center;
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.next-room-links a {
+	color: var(--color-text-muted);
+}
+
+.next-room-links a:hover {
+	color: var(--color-text-secondary);
+}
+
+/* ==========================================================================
+   Link-in-Bio Buttons
+   ========================================================================== */
+
+.bio-button {
+	display: block;
+	padding: 12px 24px;
+	border: 1px solid var(--color-border);
+	border-radius: 9999px;
+	text-align: center;
+	color: var(--color-text);
+	text-decoration: none;
+	margin-bottom: var(--space-sm);
+	transition: border-color 150ms ease-out;
+}
+
+.bio-button:hover {
+	border-color: var(--color-text-secondary);
+	text-decoration: none;
+	color: var(--color-text);
+}
+
+/* ==========================================================================
+   Single Photo Template
+   ========================================================================== */
+
+.photo-container {
+	max-width: 800px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.photo-container img {
+	max-width: 100%;
+	height: auto;
+}
+
+.photo-caption {
+	max-width: 480px;
+	margin: var(--space-md) auto 0;
+	text-align: left;
+	font-size: 15px;
+	color: var(--color-text-secondary);
+	line-height: 1.5;
+}
+
+.photo-location {
+	font-size: 13px;
+	color: var(--color-text-muted);
+	margin-bottom: var(--space-sm);
+}
+
+/* Photo empty state */
+.photo-placeholder {
+	aspect-ratio: 1 / 1;
+	max-width: 600px;
+	margin: 0 auto;
+	background: #e8e8e8;
+}
+
+html.dark-mode .photo-placeholder {
+	background: #222;
+}
+
+/* ==========================================================================
+   Gallery
+   ========================================================================== */
+
+.gallery-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-xs);
+	max-width: 960px;
+	margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+	.gallery-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* ==========================================================================
+   Magazine / Archive List
+   ========================================================================== */
+
+.article-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.article-list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	padding: var(--space-sm) 0;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.article-list li:last-child {
+	border-bottom: none;
+}
+
+.article-list a {
+	flex: 1;
+}
+
+.article-date {
+	font-size: 13px;
+	color: var(--color-text-muted);
+	white-space: nowrap;
+	margin-left: var(--space-md);
+}
+
+/* ==========================================================================
+   Specimen Page
+   ========================================================================== */
+
+.specimen-section {
+	margin-bottom: var(--space-2xl);
+}
+
+.specimen-label {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: var(--color-text-muted);
+	margin-bottom: var(--space-sm);
+}
+
+.specimen-hero {
+	font-size: clamp(28px, 4vw, 48px);
+	line-height: 1.15;
+	margin-bottom: var(--space-sm);
+}
+
+.specimen-scale-item {
+	display: flex;
+	align-items: baseline;
+	gap: var(--space-md);
+	margin-bottom: var(--space-sm);
+}
+
+.specimen-scale-label {
+	font-size: 12px;
+	color: var(--color-text-muted);
+	min-width: 50px;
+	text-align: right;
+}
+
+.specimen-dark-compare {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-sm);
+}
+
+@media (max-width: 640px) {
+	.specimen-dark-compare {
+		grid-template-columns: 1fr;
+	}
+}
+
+.specimen-dark-card {
+	padding: var(--space-md);
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+/* ==========================================================================
+   Responsive — Mobile Navigation
+   ========================================================================== */
+
+@media (max-width: 640px) {
+	.universe-nav {
+		overflow-x: auto;
+		white-space: nowrap;
+		justify-content: flex-start;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+	}
+
+	.universe-nav::-webkit-scrollbar {
+		display: none;
+	}
+
+	.site-header {
+		padding-left: var(--space-md);
+		padding-right: var(--space-md);
+	}
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+		animation-duration: 0.01ms !important;
+	}
+}

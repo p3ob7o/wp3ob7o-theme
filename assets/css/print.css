@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Print Stylesheet — Butterick-compliant
+   Strips all chrome, optimizes for paper at 12pt.
+   ========================================================================== */
+
+@media print {
+	/* Page setup */
+	@page {
+		margin: 1in;
+	}
+
+	/* Reset surface to white/black for paper */
+	body {
+		background: white !important;
+		color: black !important;
+		font-size: 12pt !important;
+		line-height: 1.5 !important;
+	}
+
+	/* Hide all navigation and interactive chrome */
+	.universe-nav,
+	.site-nav,
+	.dark-mode-toggle,
+	.next-room,
+	.skip-to-content,
+	footer,
+	nav {
+		display: none !important;
+	}
+
+	/* Links: show URL for external, hide decoration */
+	a {
+		color: black !important;
+		text-decoration: underline !important;
+	}
+
+	/* Images */
+	img {
+		max-width: 80% !important;
+		page-break-inside: avoid;
+	}
+
+	/* Prevent widows and orphans */
+	p {
+		widows: 2;
+		orphans: 2;
+	}
+
+	/* Keep headings with their content */
+	h1, h2, h3, h4, h5, h6 {
+		page-break-after: avoid;
+		page-break-inside: avoid;
+	}
+
+	/* Prevent page breaks inside quotes and figures */
+	blockquote, figure {
+		page-break-inside: avoid;
+	}
+}
