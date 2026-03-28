@@ -59,14 +59,6 @@ function wp3ob7o_dark_mode_head_script() {
 add_action( 'wp_head', 'wp3ob7o_dark_mode_head_script', 1 );
 
 /**
- * Register the dark-mode-toggle block.
- */
-function wp3ob7o_register_blocks() {
-	register_block_type( get_theme_file_path( 'blocks/dark-mode-toggle' ) );
-}
-add_action( 'init', 'wp3ob7o_register_blocks' );
-
-/**
  * Register block patterns.
  */
 function wp3ob7o_register_patterns() {

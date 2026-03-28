@@ -5,10 +5,12 @@
 	"title": "Dark Mode Toggle",
 	"category": "theme",
 	"description": "A toggle button that switches between light and dark mode.",
-	"textdomain": "wp3ob7o",
+	"textdomain": "wp3ob7o-blocks",
 	"supports": {
 		"html": false,
-		"align": false
+		"align": false,
+		"multiple": false
 	},
+	"render": "file:./render.php",
 	"viewScript": "file:./view.js"
 }
